@@ -5,11 +5,6 @@
   <meta name="description" content="*~~__https://angi.lol__~~*" />
   <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1106992077004341380/1119950307884007574/1b16a0b05e50d2a2e1ece30d9290382e.png" />
   <style>
-
-    /* Enjoy the code buddy, just a reminder... there's copyright on the line! */
-    /* Enjoy the code buddy, just a reminder... there's copyright on the line! */
-    /* Enjoy the code buddy, just a reminder... there's copyright on the line! */
-
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
@@ -19,7 +14,7 @@
       cursor:url("cursor.png"),default;
     background: #000;
     perspective: 340px;
-      overflow-y: hidden; 
+      overflow-y: hidden; /* Enable vertical scrolling for the entire body */
   }
 
   .stars {
@@ -65,65 +60,6 @@
   display: block;
 }
 
-
-#thumbnailContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-  max-height: calc(100vh - 200px); 
-  overflow-y: auto; 
-}
-
-.thumbnail {
-  width: 30%; 
-  margin-bottom: 20px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-
-    .thumbnail:hover {
-      transform: scale(1.1);
-    }
-
-    #popup-container {
-      
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5); 
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 100; 
-    }
-
-    #popup-image {
-      max-width: 80%;
-      max-height: 80%;
-      border-radius: 10px;
-      opacity: 1;
-      animation: fade-in 0.5s ease-in-out; 
-      transition: opacity 0.5s ease-in-out; 
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); 
-    }
-
-    #thumbnailContainer {
-      overflow-y: auto;
-      max-height: calc(80vh - 150px); 
-      padding: 0 40px;
-
-    }
-
-    #thumbnailContainer::-webkit-scrollbar {
-  display: none; 
-}
 
 
 
@@ -329,7 +265,7 @@
     #timezone {
       position: fixed;
       top: 10px;
-      right: 10px;
+      right: 10px; /* Adjust the right position to your preference */
       font-size: 15px;
       font-family: 'Roboto Mono', monospace;
       color: white;
@@ -340,7 +276,7 @@
 .debug {
   color: white;
   font-family: 'Roboto Mono', monospace;
-  text-align: left; 
+  text-align: left; /* Add this line to align the text to the left */
 }
     
 #socialLinks {
@@ -355,14 +291,14 @@
   width: 25px;
   height: 25px;
   filter: brightness(0) invert(1);
-  margin-top: 25px; 
+  margin-top: 25px; /* Add margin-top to move the icons down */
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
     .socialLink:hover {
       transform: scale(1.2);
       filter: brightness(0) invert(1) hue-rotate(180deg);
-
+    /* Add the following line to change the color to blue */
     filter: brightness(100%) invert(79%) sepia(55%) saturate(380%) hue-rotate(179deg) brightness(99%) contrast(97%);
     }
 
@@ -397,7 +333,7 @@
   #stats {
       position: fixed;
       top: 10px;
-      left: 10px; 
+      left: 10px; /* Adjust the left position to your preference */
       font-size: 15px;
       font-family: 'Roboto Mono', monospace;
       color: white;
@@ -421,7 +357,7 @@
   font-size: 14px;
   transition: transform 0.5s;
   z-index: 1;
-  font-family: 'Montserrat', Arial, sans-serif; 
+  font-family: 'Montserrat', Arial, sans-serif; /* Add this line to set the font */
 }
 
     #rights:hover {
@@ -441,7 +377,7 @@
 #shuffleMusic {
       position: fixed;
       top: 150px;
-      left: calc(50% - 100px); 
+      left: calc(50% - 100px); /* Adjust position as needed */
       cursor: pointer;
       width: 30px;
       height: 30px;
@@ -459,7 +395,7 @@
     #muteMusic {
       position: fixed;
       top: 152px;
-      left: calc(50% + 70px); 
+      left: calc(50% + 70px); /* Adjust position as needed */
       cursor: pointer;
       width: 25px;
       height: 25px;
@@ -492,11 +428,29 @@
 mouse.mouse()
     });
     var songs = [
-  { url: 'song1.mp3', title: 'Juice WRLD - Lucid Dreams (Directed by Cole Bennett)' },
+    { url: 'song12.mp3', title: 'Lil Peep - Star Shopping' },
+    { url: 'song1.mp3', title: 'Juice WRLD - Lucid Dreams (Directed by Cole Bennett)' },
+    { url: 'song11.mp3', title: 'Lil Peep & XXXTENTACION - Falling Down' },
+    { url: 'song10.mp3', title: 'Juice WRLD - All Girls Are The Same' },
+    { url: 'song13.mp3', title: 'Lil Peep - Save That Shit' },
+    { url: 'song14.mp3', title: 'Juice WRLD - Wishing Well' },
+    { url: 'song15.mp3', title: 'Eminem - Mockingbird' },
+    { url: 'song16.mp3', title: 'Twenty One Pilots - Stressed Out' },
+    { url: 'song17.mp3', title: 'Calvin Harris - Outside' },
+    { url: 'song18.mp3', title: 'Coldplay - Viva La Vida' },
+    { url: 'song19.mp3', title: 'Coldplay - Paradise' },
+    { url: 'song20.mp3', title: 'Queen - We Are The Champions' },
+    { url: 'song21.mp3', title: `Queen - Don't Stop Me Now ` },
+    { url: 'song22.mp3', title: 'Michael Jackson - Billie Jean' },
+    { url: 'song23.mp3', title: 'Michael Jackson - Beat It' },
   { url: 'song2.mp3', title: 'Haddaway - What Is Love ' },
   { url: 'song3.mp3', title: 'Corona - The Rhythm of the Night' },
   { url: 'song4.mp3', title: `James Hype, Miggy Dela Rosa - Ferrari (Dj Dark & Mentol Remix)` },
-  { url: 'song5.mp3', title: `Jamie Jones - My Paradise (Vintage Culture Extended Remix)` }
+  { url: 'song5.mp3', title: `Jamie Jones - My Paradise (Vintage Culture Extended Remix)` },
+  { url: 'song6.mp3', title: `Vintage Culture & James Hype - You Give Me A Feeling` },
+  { url: 'song7.mp3', title: `Hypaton x David Guetta feat. La Bouche - Be My Lover (2023 Mix)` },
+  { url: 'song8.mp3', title: `Gotye, Kimbra, FISHER, Chris Lake, Sante Sansone - Somebody (2024)` },
+  { url: 'song9.mp3', title: `Gotye, Kimbra, FISHER, Chris Lake, Sante Sansone - Somebody (2024)` }
 ];
 var audio = new Audio(songs[0].url);
 var currentSongIndex = 0;
@@ -637,67 +591,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 500);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Function to create thumbnail elements
-  function createThumbnail(imageSrc) {
-    var thumbnail = document.createElement('img');
-    thumbnail.src = imageSrc;
-    thumbnail.classList.add('thumbnail');
-    thumbnail.onclick = function() {
-      openPopup(imageSrc);
-    };
-    return thumbnail;
-  }
-
-  // Function to add thumbnails to the container
-  function addThumbnails(thumbnails) {
-    var container = document.getElementById('thumbnailContainer');
-    thumbnails.forEach(function(imageSrc) {
-      var thumbnail = createThumbnail(imageSrc);
-      container.appendChild(thumbnail);
-    });
-  }
-
-  // Array of thumbnail image URLs
-  var thumbnailImages = [
-    'thumbnail1.jpg',
-    'thumbnail2.jpg',
-    'thumbnail3.jpg',
-    'thumbnail4.jpg',
-    'thumbnail5.jpg',
-    'thumbnail6.jpg',
-    'thumbnail7.jpg',
-    'thumbnail8.jpg',
-    'thumbnail9.jpg',
-    'thumbnail10.jpg',
-    'thumbnail11.jpg',
-    'thumbnail12.jpg',
-    'thumbnail13.jpg',
-    'thumbnail14.jpg',
-    'thumbnail15.jpg'
-    // Add more thumbnail URLs as needed
-  ];
-
-  // Add thumbnails to the container
-  addThumbnails(thumbnailImages);
-});
-
-// Function to open the popup with a large thumbnail
-function openPopup(imageSrc) {
-  var popupContainer = document.getElementById('popup-container');
-  var popupImage = document.getElementById('popup-image');
-  popupImage.src = imageSrc;
-  popupContainer.style.display = 'flex'; // Display the popup container
-
-}
-
-// Function to close the popup
-function closePopup() {
-  var popupContainer = document.getElementById('popup-container');
-  popupContainer.style.display = 'none';
-
-}
-
     function showTime() {
       var timezoneElement = document.getElementById('timezone');
       var fadeInDuration = 2000; // Duration of the fade-in animation in milliseconds
@@ -717,7 +610,7 @@ function closePopup() {
       document.addEventListener('mousemove', function(event) {
         var mouseX = event.clientX;
         var mouseY = event.clientY;
-        mouseTrackPTag.textContent = "mouse: " + mouseX + "px, " + mouseY + "px";
+        mouseTrackPTag.textContent = "> mouse: " + mouseX + "px, " + mouseY + "px";
       });
     }
 
@@ -732,14 +625,14 @@ function closePopup() {
         var deltaTime = currentTime - startTime;
         var fps = Math.round(1000 / deltaTime);
         startTime = currentTime;
-        fpsTag.textContent = "fps: " + fps;
+        fpsTag.textContent = "> fps: " + fps;
         frameCount++;
         requestAnimationFrame(calculateFPS);
       }
 
       function updateMemoryUsage() {
         var memoryUsed = Math.round((performance.memory.usedJSHeapSize / 1024 / 1024) * 100) / 100;
-        memoryTag.textContent = "memory: " + memoryUsed + " MB";
+        memoryTag.textContent = "> memory: " + memoryUsed + " MB";
       }
 
       calculateFPS();
@@ -837,8 +730,8 @@ function showTime() {
       <a href="https://angi.lol/telegram" target="_blank">
         <img class="socialLink" src="telegram-logo.png" alt="Telegram" onclick="playClickSound()">
       </a>
-      <a href="https://angi.lol/designs" target="_blank">
-        <img class="socialLink" src="website-logo.png" alt="Websites" onclick="playClickSound()">
+      <a href="https://angi.lol/bonuses" target="_blank">
+        <img class="socialLink" src="designs.png" alt="Websites" onclick="playClickSound()">
       </a>
     </div>
 
@@ -857,14 +750,12 @@ function showTime() {
   
     <div id="stats">
       <p class="debug" id="timezone"> </p>
-      <p class="debug" id="mouse-track">mouse: </p>
-      <p class="debug" id="fps-track">fps: </p>
-      <p class="debug" id="memory-track">memory: </p>
+      <p class="debug" id="mouse-track">> mouse: </p>
+      <p class="debug" id="fps-track">> fps: </p>
+      <p class="debug" id="memory-track">> memory: </p>
     </div>
     <div id="timezone" style="position: fixed; top: 10px; right: 10px; font-size: 15px; font-family: 'Roboto Mono', monospace; color: white; opacity: 0; animation: fade-in 2s ease-in-out forwards;"> </div>
- 
   
-
   </div>
   <div class="pan">
     <div class="stars"></div>
