@@ -723,6 +723,42 @@ function showTime() {
       musicProgressBar.style.width = progress + '%';
     }
   });
+</script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script type="text/javascript">
+          window.oncontextmenu = function () {
+              return false;
+          }
+          $(document).keydown(function (event) {
+              if (event.keyCode == 123) {
+                  return false;
+              }
+              else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+                  return false;
+              }
+          });
+          document.addEventListener('DOMContentLoaded', function() {
+  // Actualiza el texto del user-agent
+  document.getElementById('platform').textContent = `> user agent: ${navigator.platform}`;
+});
+let clickCount = 0;
+        document.addEventListener('click', async (event) => {
+            clickCount++;
+            document.getElementById('click-track').textContent = `> clicks: ${clickCount}`;
+
+            // Send click data to the server
+            await fetch('/api/click', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ x: event.clientX, y: event.clientY })
+            });
+
+            // Optionally, you can fetch the updated click count from the server
+            // const response = await fetch('/api/click-count');
+            // const data = await response.json();
+            // document.getElementById('click-track').textContent = `clicks: ${data.clickCount}`;
+        });
+
   </script>
   
   <script defer src="fade.js"></script>
@@ -736,7 +772,7 @@ function showTime() {
     <div id="songTitle"></div>
 
     
-    <span id="shimmer">Angi Thumbnails</span>
+    <span id="shimmer">angi.lol</span>
     <div id="socialLinks">
       <a href="https://angi.lol/discord" target="_blank">
         <img class="socialLink" src="discord-logo.png" alt="Discord" onclick="playClickSound()">
@@ -744,7 +780,7 @@ function showTime() {
       <a href="https://angi.lol/telegram" target="_blank">
         <img class="socialLink" src="telegram-logo.png" alt="Telegram" onclick="playClickSound()">
       </a>
-      <a href="https://angi.lol/bonuses" target="_blank">
+      <a href="https://angi.lol/designs" target="_blank">
         <img class="socialLink" src="designs.png" alt="Websites" onclick="playClickSound()">
       </a>
     </div>
@@ -767,6 +803,8 @@ function showTime() {
       <p class="debug" id="mouse-track">> mouse: </p>
       <p class="debug" id="fps-track">> fps: </p>
       <p class="debug" id="memory-track">> memory: </p>
+      <p class="debug" id="platform">> platform: </p>
+      <p class="debug" id="click-track">> clicks: </p>
     </div>
     <div id="timezone" style="position: fixed; top: 10px; right: 10px; font-size: 15px; font-family: 'Roboto Mono', monospace; color: white; opacity: 0; animation: fade-in 2s ease-in-out forwards;"> </div>
   

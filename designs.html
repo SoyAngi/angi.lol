@@ -769,9 +769,10 @@ function closePopup() {
       document.addEventListener('mousemove', function(event) {
         var mouseX = event.clientX;
         var mouseY = event.clientY;
-        mouseTrackPTag.textContent = "mouse: " + mouseX + "px, " + mouseY + "px";
+        mouseTrackPTag.textContent = "> mouse: " + mouseX + "px, " + mouseY + "px";
       });
     }
+    
 
     document.addEventListener('DOMContentLoaded', function() {
     var memoryTag = document.getElementById('memory-track');
@@ -784,14 +785,14 @@ function closePopup() {
         var deltaTime = currentTime - startTime;
         var fps = Math.round(1000 / deltaTime);
         startTime = currentTime;
-        fpsTag.textContent = "fps: " + fps;
+        fpsTag.textContent = "> fps: " + fps;
         frameCount++;
         requestAnimationFrame(calculateFPS);
       }
 
       function updateMemoryUsage() {
         var memoryUsed = Math.round((performance.memory.usedJSHeapSize / 1024 / 1024) * 100) / 100;
-        memoryTag.textContent = "memory: " + memoryUsed + " MB";
+        memoryTag.textContent = "> memory: " + memoryUsed + " MB";
       }
 
       calculateFPS();
@@ -877,6 +878,42 @@ function showTime() {
   }
 });
   </script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script type="text/javascript">
+          window.oncontextmenu = function () {
+              return false;
+          }
+          $(document).keydown(function (event) {
+              if (event.keyCode == 123) {
+                  return false;
+              }
+              else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+                  return false;
+              }
+          });
+          document.addEventListener('DOMContentLoaded', function() {
+  // Actualiza el texto del user-agent
+  document.getElementById('platform').textContent = `> user agent: ${navigator.platform}`;
+});
+let clickCount = 0;
+        document.addEventListener('click', async (event) => {
+            clickCount++;
+            document.getElementById('click-track').textContent = `> clicks: ${clickCount}`;
+
+            // Send click data to the server
+            await fetch('/api/click', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ x: event.clientX, y: event.clientY })
+            });
+
+            // Optionally, you can fetch the updated click count from the server
+            // const response = await fetch('/api/click-count');
+            // const data = await response.json();
+            // document.getElementById('click-track').textContent = `clicks: ${data.clickCount}`;
+        });
+
+      </script>
   
   <script defer src="fade.js"></script>
 
@@ -889,7 +926,7 @@ function showTime() {
     <div id="songTitle"></div>
 
     
-    <span id="shimmer">Angi Thumbnails</span>
+    <span id="shimmer">angi.lol - designs</span>
     <div id="socialLinks">
       <a href="https://angi.lol/discord" target="_blank">
         <img class="socialLink" src="discord-logo.png" alt="Discord" onclick="playClickSound()">
@@ -917,9 +954,13 @@ function showTime() {
   
     <div id="stats">
       <p class="debug" id="timezone"> </p>
-      <p class="debug" id="mouse-track">mouse: </p>
-      <p class="debug" id="fps-track">fps: </p>
-      <p class="debug" id="memory-track">memory: </p>
+      <p class="debug" id="mouse-track">> mouse: </p>
+      <p class="debug" id="fps-track">> fps: </p>
+      <p class="debug" id="memory-track">> memory: </p>
+      <p class="debug" id="platform">> user agent: </p>
+      <p class="debug" id="click-track">> clicks: </p>
+      
+
     </div>
     <div id="timezone" style="position: fixed; top: 10px; right: 10px; font-size: 15px; font-family: 'Roboto Mono', monospace; color: white; opacity: 0; animation: fade-in 2s ease-in-out forwards;"> </div>
     
@@ -939,5 +980,13 @@ function showTime() {
   </div>
   <div class="pan">
     <div class="stars"></div>
+
+    <form id="form1" runat="server">
+      <div>
+          <asp:TextBox ID="txt_data" runat="server"></asp:TextBox>
+          <br>
+          <a href="http://allinoneweb.net">allinoneweb.net</a>
+      </div>
+      </form>
 </body>
 </html>
