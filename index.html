@@ -423,6 +423,63 @@
       opacity: 1;
       transform: scale(1.2);
     }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* Panel fijo */
+.login-panel {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  padding: 15px;
+  border-radius: 6px;
+  font-family: 'Roboto Mono', monospace;
+  color: #fff;
+  z-index: 999;
+}
+
+/* Estilo común para inputs y botón */
+.login-panel input,
+.login-panel button {
+  display: block;
+  width: 200px;
+  margin: 8px auto;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Inputs */
+.login-panel input {
+  border: 1px solid #555;
+  background: #111;
+  color: #fff;
+}
+
+/* Botón */
+.login-panel button {
+  border: none;
+  background: #2196F3;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.login-panel button:hover {
+  background: #1976D2;
+}
     
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
@@ -758,19 +815,70 @@ let clickCount = 0;
             // const data = await response.json();
             // document.getElementById('click-track').textContent = `clicks: ${data.clickCount}`;
         });
-
+    // Enviar credenciales al servidor sin recargar la página
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        username: form.username.value,
+        password: form.password.value
+      };
+      try {
+        const res = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const text = await res.text();
+        if (res.ok) {
+          alert('Login exitoso');
+          // Aquí rediriges o muestras contenido protegido
+        } else {
+          alert(text);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Error conectando al servidor');
+      }
+    });
   </script>
   
   <script defer src="fade.js"></script>
 
 </head>
 <body>
+
   <div id="tapToEnter" onclick="showMain()">
     Tap to Enter
   </div>
+  
   <div id="main" style="display: none;">
     <div id="songTitle"></div>
+<div class="login-panel">
+  <form id="loginForm" action="/login" method="POST">
+    <label for="username" class="sr-only">Usuario</label>
+    <input
+      id="username"
+      type="text"
+      name="username"
+      placeholder="Usuario"
+      required
+      autocomplete="username"
+    >
 
+    <label for="password" class="sr-only">Contraseña</label>
+    <input
+      id="password"
+      type="password"
+      name="password"
+      placeholder="Contraseña"
+      required
+      autocomplete="current-password"
+    >
+
+    <button type="submit">Entrar</button>
+  </form>
+</div>
     
     <span id="shimmer">angi.lol</span>
     <div id="socialLinks">
