@@ -28,8 +28,13 @@ const User = mongoose.model('User', userSchema);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// 4) Sirve archivos estáticos (tu index.html y assets)
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(__dirname));
+
+// Servir index.html en la raíz
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // 5) Ruta de login
 app.post('/login', async (req, res) => {
