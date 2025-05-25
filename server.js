@@ -35,6 +35,9 @@ app.use(express.static(__dirname));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'designs.html'));
+});
 
 // 5) Ruta de login
 app.post('/login', async (req, res) => {
