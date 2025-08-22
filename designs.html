@@ -680,7 +680,7 @@
 
     // New function to update the "last edit" timer every second
     function updateLastEdit() {
-      const lastEdit = new Date('2025-04-12T00:00:00');
+      const lastEdit = new Date('2025-08-22T00:00:00');
       var now = new Date();
       var diff = now - lastEdit;
       // If the current time is before the last edit date, show 0 days and 0 minutes.
@@ -688,8 +688,8 @@
         document.getElementById('last-edit-track').textContent = "> last update: 0 days and 0 minutes ago";
         return;
       }
-      var days = Math.floor(diff / (24 * 60 * 60 * 1000));
-      var minutes = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 1000));
+var days = Math.floor(diff / (24 * 60 * 60 * 1000));
+var minutes = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 1000));
       document.getElementById('last-edit-track').textContent = "> last update: " + days + " days and " + minutes + " minutes ago";
     }
     setInterval(updateLastEdit, 1000);
@@ -850,3 +850,4 @@
   </div>
 </body>
 </html>
+
